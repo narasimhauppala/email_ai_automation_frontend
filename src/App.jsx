@@ -1,5 +1,5 @@
 
-import axios from 'axios';
+
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -19,24 +19,7 @@ const theme = createTheme({
 });
 
 function App() {
-  const handleGoogleLogin = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/auth/google');
-      window.location.href = response.request.responseURL;
-    } catch (error) {
-      console.error('Error during Google login:', error);
-    }
-  };
 
-  const handleOutlookLogin = async () => {
-    try {
-      const response = await axios.get('http://localhost:3000/auth/outlook');
-      window.location.href = response.request.responseURL;
-    } catch (error) {
-      console.error('Error during Outlook login:', error);
-    }
-
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,22 +41,28 @@ function App() {
               variant="contained"
               color="primary"
               sx={{ mt: 3, mb: 2 }}
-              onClick={handleGoogleLogin}
+              
             >
+              
+              <a style={{color:"white",textDecoration:'none'}} href="http://localhost:3000/auth/google" target='_blank'>
               Login with Google
+          </a>
             </Button>
             <Button
               fullWidth
               variant="contained"
               color="secondary"
               sx={{ mt: 1, mb: 2 }}
-              onClick={handleOutlookLogin}
+
+              
             >
+              <a style={{color:"white",textDecoration:'none'}} href="http://localhost:3000/auth/outlook" target='_blank'>
               Login with Outlook
+          </a>
             </Button>
           </Box>
           <Link>
-          <a href="http://localhost:3000/admin/queues" target='_blank'>
+          <a href="http://localhost:3000/admin/queues" style={{color:"secondary",textDecoration:'none'}} target='_blank'>
             Go to Queues UI
           </a>
           </Link>
